@@ -33,7 +33,20 @@ function render() {
    section.append(links);
    return section;
   }
-  body.append(resourceSection(game.resourceTitle || 'Patch / mod', game.description || 'Lihat detail dan petunjuk pemasangan proyek.', [[game.resourceLabel || 'Buka patch / mod ↗', game.url], ['Panduan instalasi', game.guideUrl]], 'translation-section'));
+  const patchSection = resourceSection(game.resourceTitle || 'Patch / mod', game.description || 'Lihat detail dan petunjuk pemasangan proyek.', [[game.resourceLabel || 'Buka patch / mod ↗', game.url], ['Panduan instalasi', game.guideUrl]], 'translation-section');
+  if (Array.isArray(game.versionHistory) && game.versionHistory.length) {
+   const history = node('details', 'version-history');
+   history.append(node('summary', '', 'Version history'));
+   const entries = node('ol', 'version-entries');
+   game.versionHistory.forEach(release => {
+    const item = node('li');
+    item.append(node('h5', '', release.version + ' (' + release.date + ')'), node('p', '', release.changes));
+    entries.append(item);
+   });
+   history.append(entries);
+   patchSection.append(history);
+  }
+  body.append(patchSection);
   if (game.downloadUrl) body.append(resourceSection('Download game', game.downloadNote, [['Download game ↗', game.downloadUrl]], 'download-section'));
   card.append(body); grid.append(card);
  });

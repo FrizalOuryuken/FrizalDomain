@@ -1,8 +1,12 @@
 // Tambahkan proyek berikutnya sebagai objek baru di dalam array.
 window.PROJECTS = [
   {
-    title: "Digimon World 2003 Bahasa Indonesia",
+    title: "Digimon World 2003 Bahasa Indonesia V 1.0.1",
     category: "Translasi",
+    versionHistory: [
+      { version: "V1.0.1", date: "21 September 2026", changes: "Fixes several translation errors" },
+      { version: "V1.0", date: "11 September 2026", changes: "Initial Release" },
+    ],
     resourceTitle: "Patch translasi",
     resourceLabel: "Buka patch translasi ↗",
     platform: "PlayStation",
