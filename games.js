@@ -1,4 +1,3 @@
-// Tambahkan proyek berikutnya sebagai objek baru di dalam array.
 window.PROJECTS = [
   {
     title: "Digimon World 2003 Bahasa Indonesia V 1.0.1",

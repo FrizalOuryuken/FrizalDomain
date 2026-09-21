@@ -8,3 +8,4 @@
 .mod-mark{font-size:70px;letter-spacing:-4px;line-height:1.05}.mod-mark strong{font-size:82px}@media(max-width:800px){.mod-mark{font-size:48px}.mod-mark strong{font-size:58px}}@media(max-width:560px){.mod-mark{font-size:58px}.mod-mark br{display:block}.mod-mark strong{font-size:68px;margin-left:0}}
 
 .version-history{margin-top:20px;border-top:1px solid var(--line);padding-top:12px}.version-history summary{cursor:pointer;font-size:14px;font-weight:600;padding:6px 0;color:var(--accent)}.version-history summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.version-entries{list-style:none;margin:14px 0 0;padding:0}.version-entries li+li{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}.version-entries h5{font-size:14px;line-height:1.5;margin:0 0 6px}.version-entries p{margin:0;font-size:14px}
+/*  */
