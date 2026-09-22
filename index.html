@@ -12,6 +12,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
     <script defer src="games.js"></script>
+    <script defer src="blog.js"></script>
     <script defer src="app.js"></script>
   </head>
   <body>
@@ -29,42 +30,46 @@
       </header>
       <main>
         <section id="koleksi" class="collection">
-          <div class="section-heading">
+          <div class="collection-tabs" role="tablist" aria-label="Koleksi"><button type="button" id="tab-game" role="tab" data-collection="game" aria-selected="true" aria-controls="collection-panel">Game</button><button type="button" id="tab-blog" role="tab" data-collection="blog" aria-selected="false" aria-controls="collection-panel" tabindex="-1">Blog</button></div>
+<div id="collection-panel" role="tabpanel" aria-labelledby="tab-game">
+<div class="section-heading">
             <div>
               <p class="eyebrow">THE COLLECTION</p>
-              <h2>Arsip proyek<span id="total">00</span></h2>
+              <h2><span id="collection-title">Arsip proyek</span><span id="total">00</span></h2>
             </div>
-            <p>Patch, mod, dan translasi dalam satu tempat.</p>
+            <p id="collection-description">Patch, mod, dan translasi dalam satu tempat.</p>
           </div>
-          <div class="toolbar">
-            <label class="search"
-              ><span aria-hidden="true">⌕</span
-              ><input
-                id="search"
-                type="search"
-                placeholder="Cari judul game…"
-                aria-label="Cari judul game" /></label
-            ><label class="platform-label"
-              >Platform<select id="platform">
-                <option value="">Semua platform</option>
-              </select></label
-            >
+          <div class="toolbar" role="group" aria-label="Cari dan filter proyek">
+            <label class="filter-field search-field" for="search">
+              <span class="filter-caption" id="search-caption">Cari game</span>
+              <span class="filter-control search-control"><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><input id="search" type="search" placeholder="Ketik judul game…" /></span>
+            </label>
+            <label class="filter-field" for="series-filter"><span class="filter-caption">Seri</span><span class="filter-control select-control"><select id="series-filter"><option value="">Semua seri</option></select><svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m5 7.5 5 5 5-5"/></svg></span></label>
+<label class="filter-field" for="game-filter"><span class="filter-caption">Game</span><span class="filter-control select-control"><select id="game-filter"><option value="">Semua game</option></select><svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m5 7.5 5 5 5-5"/></svg></span></label>
+<label class="filter-field" for="platform">
+              <span class="filter-caption">Platform</span>
+              <span class="filter-control select-control"><select id="platform"><option value="">Semua platform</option></select><svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m5 7.5 5 5 5-5"/></svg></span>
+            </label>
+            <label class="filter-field" for="item-type">
+              <span class="filter-caption">Tipe item</span>
+              <span class="filter-control select-control"><select id="item-type"><option value="">Semua tipe</option></select><svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m5 7.5 5 5 5-5"/></svg></span>
+            </label>
+          <label class="filter-field sort-field" for="sort-order"><span class="filter-caption">Tanggal publish</span><span class="filter-control select-control"><select id="sort-order"><option value="desc" selected>Terbaru dahulu</option><option value="asc">Terlama dahulu</option></select><svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m5 7.5 5 5 5-5"/></svg></span></label>
           </div>
+          <label class="pin-filter" for="prioritize-pinned"><input type="checkbox" id="prioritize-pinned" role="switch" checked><span>Prioritaskan pinned</span></label>
           <div id="results" class="results" aria-live="polite"></div>
           <div id="games" class="game-grid"></div>
           <div id="empty" class="empty">
             <span class="empty-symbol" aria-hidden="true">＋</span>
-            <h3>Koleksi segera hadir</h3>
-            <p>
-              Proyek patch dan mod game akan ditambahkan di sini.<br />Kembali
-              lagi untuk menemukan petualangan berikutnya.
-            </p>
+            <h3>Nothing here yet</h3>
+            <p>The author must be so lazy to add something</p>
           </div>
           <noscript
             ><p>
               Aktifkan JavaScript untuk menampilkan koleksi proyek.
             </p></noscript
           >
+        </div>
         </section>
 
         <section class="donation" aria-labelledby="donation-title">
