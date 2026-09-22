@@ -320,3 +320,38 @@ document.querySelectorAll('[data-collection]').forEach(button => {
 });
 selectTab('game');
 // 
+// One compact floating link docks into the original donation button.
+(() => {
+ const original = document.querySelector('.donation-button');
+ if (!original) return;
+ const floating = original.cloneNode(true);
+ floating.classList.add('donation-floating');
+ document.body.append(floating);
+ let scheduled = false;
+ function update() {
+  scheduled = false;
+  const rect = original.getBoundingClientRect();
+  const height = window.innerHeight;
+  const width = window.innerWidth;
+  const margin = width <= 560 ? 26 : 38;
+  const baseWidth = Math.min(204, width - margin * 2);
+  const baseHeight = 42;
+  const progress = Math.max(0, Math.min(1, (height - margin + 140 - rect.bottom) / 140));
+  const docked = progress === 1;
+  const lerp = (a, b) => a + (b - a) * progress;
+  floating.style.left = lerp(width - baseWidth - margin, rect.left) + 'px';
+  floating.style.top = lerp(height - baseHeight - margin, rect.top) + 'px';
+  floating.style.width = lerp(baseWidth, rect.width) + 'px';
+  floating.style.height = lerp(baseHeight, rect.height) + 'px';
+  floating.style.fontSize = lerp(12, 14) + 'px';
+  original.style.visibility = docked ? '' : 'hidden';
+  floating.style.visibility = docked ? 'hidden' : 'visible';
+  if (docked && document.activeElement === floating) original.focus({preventScroll:true});
+  if (!docked && document.activeElement === original) floating.focus({preventScroll:true});
+ }
+ function schedule() { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } }
+ window.addEventListener('scroll', schedule, {passive:true});
+ window.addEventListener('resize', schedule);
+ new ResizeObserver(schedule).observe(document.body);
+ update();
+})();

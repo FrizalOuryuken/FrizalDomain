@@ -63,3 +63,17 @@
 .media-video-preview{position:relative;overflow:hidden;isolation:isolate}.youtube-thumbnail{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}.media-video-preview::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.75));z-index:-1}.video-preview-caption{font-size:14px;line-height:1.4;text-shadow:0 1px 4px #000}.media-video-preview:hover .video-play-icon{background:#e1ffaa}
 
 .collection-tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:28px}.collection-tabs button{padding:12px 24px;background:transparent;color:var(--muted);border:0;border-bottom:3px solid transparent;font:inherit;cursor:pointer}.collection-tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}.collection-tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}h2>#collection-title{font:inherit;color:inherit;vertical-align:baseline;display:inline;margin:0;border:0;border-radius:0;padding:0}.post-content,.post-description{margin-top:16px}.post-content p{white-space:pre-wrap;line-height:1.7}
+
+.donation-floating{position:fixed;z-index:20;margin:0;padding:0 12px;gap:10px;min-width:0;border-radius:8px;box-shadow:0 5px 24px #0005;white-space:nowrap;box-sizing:border-box}.donation-floating:hover{box-shadow:0 6px 28px #0008}.donation-floating:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+
+/* Trakteer hover: soft backlight, lift, and one shine per hover. */
+.donation-button{position:relative;overflow:hidden;isolation:isolate;transition:transform 220ms ease,box-shadow 220ms ease,background 220ms ease}
+.donation-floating{position:fixed}
+.donation-button::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.08) 39%,rgba(255,255,255,.55) 50%,rgba(255,255,255,.08) 61%,transparent 75%);transform:translateX(-130%)}
+@keyframes trakteer-shine{from{transform:translateX(-130%)}to{transform:translateX(130%)}}
+@media(hover:hover){
+ .donation-button:hover{transform:translateY(-4px);box-shadow:0 10px 22px rgba(0,0,0,.35),0 0 22px rgba(244,63,94,.48),0 0 46px rgba(225,29,72,.22);background:#d01949}
+ .donation-button:hover::after{animation:trakteer-shine 700ms ease-out 1 both}
+}
+.donation-button:focus-visible{box-shadow:0 0 24px rgba(244,63,94,.45)}
+@media(prefers-reduced-motion:reduce){.donation-button{transition:none}.donation-button:hover{transform:none}.donation-button:hover::after{animation:none}}
