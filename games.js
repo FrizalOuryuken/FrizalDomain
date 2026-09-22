@@ -1,4 +1,4 @@
-// Media lokal disimpan dalam images/<id-proyek>/; video menggunakan URL YouTube.
+// Dikelola dengan Frizal Domain Post Manager.
 window.PROJECTS = [
   {
     "title": "Digimon World 2003 Bahasa Indonesia V 1.0.1",
