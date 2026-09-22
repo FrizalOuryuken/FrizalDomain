@@ -12,7 +12,7 @@ from tkinter import ttk, filedialog, messagebox
 import uuid
 import webbrowser
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 SOURCES = {'Game': ('games.js', 'PROJECTS'), 'Blog': ('blog.js', 'BLOG_POSTS')}
 
 
@@ -50,7 +50,7 @@ SCHEMAS = {
  'history': [('version', 'Versi', 'text'), ('date', 'Tanggal (contoh: 21 September 2026)', 'text'), ('changes', 'Perubahan', 'long')],
  'media': [('type', 'Jenis media', ('image', 'youtube')), ('url', 'Path gambar / URL YouTube', 'text'), ('alt', 'Deskripsi media', 'text'), ('fit', 'Tampilan gambar', ('contain', 'cover'))],
  'item': [('title', 'Judul item', 'text'), ('type', 'Tipe (pisahkan dengan koma)', 'array'), ('group', 'Accordion (kosong = tampil langsung)', 'text'), ('description', 'Deskripsi', 'long')],
- 'post': [('title', 'Judul post', 'text'), ('id', 'ID unik / folder media', 'text'), ('publishedAt', 'Tanggal publish (YYYY-MM-DD)', 'text'), ('game', 'Game', 'text'), ('series', 'Seri', 'text'), ('platform', 'Platform', 'text'), ('pinned', 'Pinned', 'bool'), ('pin_number', 'Urutan pin (angka kecil lebih dulu)', 'number'), ('description', 'Ringkasan', 'long'), ('content', 'Isi informasi (pisahkan paragraf dengan baris kosong)', 'content')]
+ 'post': [('title', 'Judul post', 'text'), ('id', 'ID unik / folder media', 'text'), ('publishedAt', 'Tanggal publish (YYYY-MM-DD)', 'text'), ('game', 'Game', 'text'), ('series', 'Seri', 'text'), ('platform', 'Platform', 'text'), ('version', 'Versi post (opsional)', 'text'), ('pinned', 'Pinned', 'bool'), ('pin_number', 'Urutan pin (angka kecil lebih dulu)', 'number'), ('description', 'Ringkasan', 'long'), ('content', 'Isi informasi (pisahkan paragraf dengan baris kosong)', 'content')]
 }
 NESTED = {'post': [('media', 'Media', 'media'), ('items', 'Item & link', 'item')], 'item': [('links', 'Link', 'link'), ('versionHistory', 'Riwayat versi', 'history')]}
 

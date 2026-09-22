@@ -30,5 +30,32 @@ class StorageTests(unittest.TestCase):
             finally:
                 pm.ROOT = old_root
 
+class InterfaceTests(unittest.TestCase):
+    def test_forms_and_nested_lists(self):
+        app = pm.Manager()
+        app.withdraw()
+        try:
+            app.update_idletasks()
+            self.assertEqual(len(app.tree.get_children()), len(app.data['Game']))
+            app.mode.set('Blog')
+            app.refresh()
+            self.assertEqual(len(app.tree.get_children()), len(app.data['Blog']))
+            for kind, value in [
+                ('post', {'id': 'smoke-test', 'title': 'Test', 'publishedAt': '2026-09-22', 'pinned': True, 'pin_number': 1, 'media': [], 'items': [], 'customField': 'preserved'}),
+                ('item', {'title': 'Mod', 'type': ['Mod', 'Tools'], 'links': [], 'versionHistory': []}),
+                ('media', {'type': 'youtube', 'url': 'https://youtu.be/VvZYFl8iH8o'}),
+                ('link', {'label': 'Download', 'url': 'https://example.com/file'}),
+                ('history', {'version': '1.0', 'date': '22 September 2026', 'changes': 'Release'})
+            ]:
+                dialog = pm.Editor(app, kind, value, 'smoke-test')
+                dialog.withdraw()
+                dialog.update_idletasks()
+                dialog.apply()
+                self.assertIsNotNone(dialog.result)
+                for key, expected in value.items():
+                    self.assertEqual(dialog.result[key], expected)
+        finally:
+            app.destroy()
+
 if __name__ == '__main__':
     unittest.main()

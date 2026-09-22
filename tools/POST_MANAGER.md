@@ -5,7 +5,7 @@ Memerlukan Python 3.10+ dengan Tkinter (tersedia pada installer standar Python u
 Jalankan dari folder proyek:
 
 ```powershell
-python post_manager.py
+python tools/post_manager.py
 ```
 
 1. Pilih Game atau Blog.
@@ -25,5 +25,7 @@ Format sumber: assignment window.PROJECTS/window.BLOG_POSTS berisi JSON (seperti
 Pengujian penyimpanan:
 
 ```powershell
-python -m unittest test_post_manager.py
+python -m unittest discover -s tools -p "test_post_manager.py"
 ```
+
+Di Windows, Anda juga bisa klik dua kali **tools/Post Manager.cmd**. Python harus tersedia pada PATH.
