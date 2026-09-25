@@ -1,0 +1,33 @@
+{
+  "name": "frizaldomain",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-09-25",
+  "assets": {
+    "directory": "./site-dist",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "frizal-domain-db",
+      "database_id": "61abb2ed-986a-48a0-8177-2502d8304fbe",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "build": {
+    "watch_dir": [
+      "index.html",
+      "style.css",
+      "app.js",
+      "games.js",
+      "blog.js",
+      "visitor-counter.js",
+      "favicon.svg",
+      "images"
+    ],
+    "command": "node tools/build-assets.mjs"
+  }
+}

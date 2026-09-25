@@ -1,3 +1,6 @@
 PANDUAN.md
 .post-manager-backups/
 __pycache__/
+
+site-dist/
+.wrangler/

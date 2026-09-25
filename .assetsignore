@@ -1,0 +1,13 @@
+.git/
+.gitignore
+.post-manager-backups/
+__pycache__/
+tools/
+migrations/
+worker.mjs
+wrangler*
+*.md
+.assetsignore
+.node_modules/
+node_modules/
+.wrangler/
