@@ -1,6 +1,8 @@
 (() => {
  const output = document.querySelector('#visitor-total');
  if (!output) return;
+ const panel = document.querySelector('.visitor-counter');
+ const status = document.querySelector('#visitor-status');
  async function load() {
   try {
    let visitorId;
@@ -18,7 +20,13 @@
    const data = await response.json();
    if (!Number.isSafeInteger(data.total) || data.total < 0) throw new Error('Invalid count');
    output.textContent = new Intl.NumberFormat('id-ID').format(data.total);
-  } catch { output.textContent = 'belum tersedia'; }
+   panel.dataset.state = 'ready';
+   status.textContent = 'Satu kunjungan per browser per hari.';
+  } catch {
+   output.textContent = '—';
+   panel.dataset.state = 'error';
+   status.textContent = 'Statistik belum tersedia.';
+  } finally { panel.setAttribute('aria-busy', 'false'); }
  }
  load();
 })();
