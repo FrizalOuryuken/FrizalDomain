@@ -14,7 +14,8 @@
       "binding": "DB",
       "database_name": "frizal-domain-db",
       "database_id": "61abb2ed-986a-48a0-8177-2502d8304fbe",
-      "migrations_dir": "migrations"
+      "migrations_dir": "migrations",
+      "remote": false
     }
   ],
   "build": {
